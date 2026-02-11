@@ -1,17 +1,10 @@
-# Welcome to MkDocs
+# 欢迎来到我的数字花园
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+这里是 nian 的个人知识库。
+我会在这里记录：
+* 🤖 机器人学习笔记
+* 🧠 AI 论文阅读
+* 🔧 项目复盘
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## 关于我
+一名正在摸索 LLM 和具身智能的研究生...
