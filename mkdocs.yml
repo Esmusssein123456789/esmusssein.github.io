@@ -110,6 +110,12 @@ markdown_extensions:
   - attr_list
   - md_in_html
 
+  # 文本标记
+  - pymdownx.mark          # ==高亮==
+  - pymdownx.tilde         # ~下标~ 和 ~~删除线~~
+  - pymdownx.caret         # ^上标^
+  - pymdownx.keys          # ++ctrl+c++ 键盘按键
+
   # 其他实用扩展
   - def_list
   - footnotes
@@ -140,3 +146,5 @@ nav:
   - 首页: index.md
   - 学习笔记:
       - Python: 学习笔记/python.md
+  - 更新记录: changelog.md
+  - 写作指南: user.md

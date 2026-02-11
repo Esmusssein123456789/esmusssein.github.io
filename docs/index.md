@@ -11,11 +11,10 @@ hide:
 
 # <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
 
-**:material-school: 研究生 · 机器人 · AI · 终身学习者**
+** Robotics · AI · Life**
 { .hero-subtitle }
 
-一个记录思考与成长的数字花园。
-在这里，你会找到关于**机器人学、人工智能、算法**的学习笔记和项目复盘。
+欢迎来到nian的笔记本
 
 [开始探索 :material-arrow-right:](#recent-updates){ .md-button .md-button--primary }
 [GitHub :fontawesome-brands-github:](https://github.com/alannian){ .md-button }
@@ -25,9 +24,31 @@ hide:
 
 ---
 
-<!-- ==================== 最近更新 ==================== -->
+<!-- ==================== 格言区域 ==================== -->
+
+<div class="quote-banner" markdown>
+<div class="quote-text" markdown>
+
+知止而后有定，定而后能静，<br>
+静而后能安，安而后能虑，<br>
+虑而后能得。
+{ .quote-body }
+
+——《大学》
+{ .quote-source }
+
+</div>
+</div>
+
+---
+
+<!-- ==================== 主体内容居中容器 ==================== -->
+
+<div class="home-center-wrapper" markdown>
 
 ## :material-update: 最近更新 { #recent-updates }
+
+[:material-history: 查看完整更新记录](changelog.md){ .changelog-link }
 
 | 日期 | 更新内容 | 链接 |
 | :--- | :--- | :---: |
@@ -36,7 +57,43 @@ hide:
 
 ---
 
-<!-- ==================== 关于我 ==================== -->
+## :material-chart-box: 站点统计 { #site-stats }
+
+<div class="stats-grid" markdown>
+
+<div class="stat-card">
+  <div class="stat-icon">:material-file-document-multiple:</div>
+  <div class="stat-value" id="stat-pages">—</div>
+  <div class="stat-label">笔记总数</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">:material-text:</div>
+  <div class="stat-value" id="stat-words">—</div>
+  <div class="stat-label">总字数</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">:material-calendar-star:</div>
+  <div class="stat-value" id="stat-created">—</div>
+  <div class="stat-label">创建时间</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">:material-calendar-clock:</div>
+  <div class="stat-value" id="stat-updated">—</div>
+  <div class="stat-label">最近更新</div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon">:material-timer-sand:</div>
+  <div class="stat-value" id="stat-uptime">—</div>
+  <div class="stat-label">已运行</div>
+</div>
+
+</div>
+
+---
 
 ## :material-account: 关于我
 
@@ -51,7 +108,8 @@ hide:
     热爱探索技术边界，相信记录是最好的学习方式。
 
     - :material-map-marker: 坐标：中国
-    - :material-telescope: 研究方向：机器人 / AI
-    - :material-coffee: 驱动力：咖啡与好奇心
+    - :material-telescope: 研究方向：具身智能
+
+</div>
 
 </div>
