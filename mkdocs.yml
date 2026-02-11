@@ -1,0 +1,28 @@
+site_name: 一念  # 网站标题，你可以随便改
+site_url: https://esmusssein.github.io/  # 改成你的实际网址
+
+theme:
+  name: material
+  language: zh  # 设置为中文
+  palette: 
+    - scheme: default # 白天模式
+      primary: indigo
+      accent: indigo
+    - scheme: slate   # 夜间模式
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.tabs # 顶部导航栏
+    - search.suggest  # 搜索建议
+    - search.highlight # 搜索高亮
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition  # 提示块（那种漂亮的警告/提示框）
+
+plugins:
+  - search
