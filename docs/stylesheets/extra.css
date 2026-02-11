@@ -1,0 +1,126 @@
+/* ============================================================
+   一念 · 自定义样式表
+   配色理念：Indigo（学术蓝）+ Amber（点缀金）
+   ============================================================ */
+
+/* ---------- CSS 变量覆盖 ---------- */
+:root {
+  --hero-gradient-start: #3949ab;
+  --hero-gradient-end: #1a237e;
+}
+[data-md-color-scheme="slate"] {
+  --hero-gradient-start: #283593;
+  --hero-gradient-end: #0d1b3e;
+}
+
+/* ============================================================
+   Hero 区域
+   ============================================================ */
+.hero-section {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+}
+
+.hero-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 打字机标题 */
+.hero-section h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  min-height: 3.6rem; /* 防止布局抖动 */
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--hero-gradient-start), var(--md-accent-fg-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 打字机光标闪烁 */
+.typewriter-cursor {
+  -webkit-text-fill-color: var(--md-accent-fg-color);
+  animation: blink 1s step-end infinite;
+  font-weight: 100;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* 副标题 */
+.hero-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin-top: -0.25rem;
+}
+
+/* Hero 按钮间距 */
+.hero-content .md-button {
+  margin: 0.5rem 0.3rem;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   Grid Cards 增强
+   ============================================================ */
+.md-typeset .grid.cards > ul > li {
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--md-shadow-z3, 0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* 卡片图标大小 */
+.md-typeset .grid.cards > ul > li > :first-child {
+  font-size: 1.15rem;
+}
+
+/* ============================================================
+   按钮全局样式
+   ============================================================ */
+.md-typeset .md-button {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Admonition 圆角
+   ============================================================ */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+}
+
+/* ============================================================
+   目录层级缩进优化
+   ============================================================ */
+.md-sidebar--secondary .md-nav__link {
+  font-size: 0.78rem;
+}
+
+/* ============================================================
+   页面过渡动画
+   ============================================================ */
+.md-content {
+  animation: fadeIn 0.35s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   响应式适配
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 1.8rem;
+    min-height: 2.6rem;
+  }
+  .hero-section {
+    padding: 2rem 0.5rem 1rem;
+  }
+}

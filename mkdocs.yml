@@ -1,28 +1,142 @@
-site_name: 一念  # 网站标题，你可以随便改
-site_url: https://alannian.github.io/  # 改成你的实际网址
+# ──────────────────────────────────────────────
+# 站点信息
+# ──────────────────────────────────────────────
+site_name: 一念
+site_url: https://alannian.github.io/
+site_description: nian 的个人知识库 — 机器人、AI、算法学习笔记与项目复盘
+site_author: nian
 
+# ──────────────────────────────────────────────
+# 主题配置
+# ──────────────────────────────────────────────
 theme:
   name: material
-  language: zh  # 设置为中文
-  palette: 
-    - scheme: default # 白天模式
-      primary: indigo
-      accent: indigo
-    - scheme: slate   # 夜间模式
-      primary: indigo
-      accent: indigo
-  features:
-    - navigation.tabs # 顶部导航栏
-    - search.suggest  # 搜索建议
-    - search.highlight # 搜索高亮
+  language: zh
 
+  # 配色方案：沉稳学术蓝 + 活力琥珀色点缀
+  palette:
+    - scheme: default          # ☀️ 亮色模式
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: 切换到暗色模式
+    - scheme: slate            # 🌙 暗色模式
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: 切换到亮色模式
+
+  # 字体
+  font:
+    text: Noto Sans SC         # 中文正文字体
+    code: JetBrains Mono       # 等宽代码字体
+
+  # 图标
+  icon:
+    logo: material/book-open-page-variant
+    repo: fontawesome/brands/github
+
+  # ⭐ 高级功能开关
+  features:
+    - navigation.tabs          # 顶部导航标签页
+    - navigation.tabs.sticky   # 标签页滚动时固定
+    - navigation.top           # 回到顶部按钮
+    - navigation.sections      # 侧边栏按分区展示
+    - navigation.indexes       # 分区可关联 index 页
+    - navigation.footer        # 底部上/下页导航
+    - header.autohide          # 向下滚动时自动隐藏顶栏
+    - search.suggest           # 搜索自动建议
+    - search.highlight         # 搜索关键词高亮
+    - search.share             # 搜索结果可分享
+    - content.code.copy        # 代码块一键复制按钮
+    - content.code.annotate    # 代码行内注释气泡
+    - content.tabs.link        # 选项卡联动切换
+    - toc.follow               # 目录跟随滚动高亮
+
+# ──────────────────────────────────────────────
+# 自定义样式 & 脚本
+# ──────────────────────────────────────────────
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+# ──────────────────────────────────────────────
+# Markdown 扩展（核心能力）
+# ──────────────────────────────────────────────
 markdown_extensions:
+  # 提示块 & 可折叠提示块
+  - admonition
+  - pymdownx.details
+
+  # 代码高亮
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
-  - admonition  # 提示块（那种漂亮的警告/提示框）
 
+  # 超级围栏（支持 Mermaid 图表）
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # 选项卡
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # 任务列表
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # 图标 & Emoji（使用 Material 图标库）
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # 数学公式（LaTeX）
+  - pymdownx.arithmatex:
+      generic: true
+
+  # 属性列表 & HTML in Markdown
+  - attr_list
+  - md_in_html
+
+  # 其他实用扩展
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true          # 标题旁显示永久链接 ¶
+      toc_depth: 3
+
+# ──────────────────────────────────────────────
+# 插件
+# ──────────────────────────────────────────────
 plugins:
   - search
+
+# ──────────────────────────────────────────────
+# 社交链接 & 页脚
+# ──────────────────────────────────────────────
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/alannian
+      name: GitHub
+
+# ──────────────────────────────────────────────
+# 导航结构
+# ──────────────────────────────────────────────
+nav:
+  - 首页: index.md
+  - 学习笔记:
+      - Python: 学习笔记/python.md
