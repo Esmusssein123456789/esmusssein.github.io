@@ -150,9 +150,24 @@ nav:
   - Home: index.md
   - Robotics:
       - Robotics/index.md
+      - ROS:
+          - Robotics/ROS/index.md
+          - ROS1: Robotics/ROS/ROS1/index.md
+          - ROS2: Robotics/ROS/ROS2/index.md
+      - 嵌入式:
+          - Robotics/嵌入式/index.md
+          - STM32: Robotics/嵌入式/STM32/index.md
+          - FreeRTOS: Robotics/嵌入式/FreeRTOS/index.md
+      - PCB:
+          - Robotics/PCB/index.md
+          - EDA: Robotics/PCB/EDA/index.md
+          - 电路: Robotics/PCB/电路/index.md
+      - 机械:
+          - Robotics/机械/index.md
+          - SolidWorks: Robotics/机械/SW.md
   - AI:
       - AI/index.md
-      - Python: AI/python.md
+      - LLM: AI/LLM/index.md
   - Life:
       - Life/index.md
   - Website:
