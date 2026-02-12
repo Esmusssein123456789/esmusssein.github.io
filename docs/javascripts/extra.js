@@ -1,23 +1,47 @@
 /**
  * 一念 · 首页打字机效果
- * 循环展示多条标语，逐字打出再逐字删除
+ * 自动根据容器宽度缩放字号，确保文字永远不会溢出
  */
 document.addEventListener("DOMContentLoaded", function () {
-  const el = document.getElementById("typewriter-text");
+  var el = document.getElementById("typewriter-text");
   if (!el) return;
 
-  const texts = [
+  var heading = el.closest("h1");
+  if (!heading) return;
+
+  var texts = [
     "一念起，万水千山",
     "Keep Thinking, Keep Fighting",
-    "Stay Hungry, Stay Foolish",
+    "Stay Foolish, Stay Hungry",
   ];
 
-  let textIdx = 0;
-  let charIdx = 0;
-  let isDeleting = false;
+  var baseFontSize = 2.6; // rem
+  var minFontSize = 1.2;  // rem
+
+  // 动态调整字号，保证文字不溢出
+  function fitText() {
+    if (!heading) return;
+    var container = heading.parentElement;
+    if (!container) return;
+
+    // 先设为基础字号来测量
+    heading.style.fontSize = baseFontSize + "rem";
+    var containerW = container.offsetWidth - 20; // 留一点余量
+    var textW = heading.scrollWidth;
+
+    if (textW > containerW && containerW > 0) {
+      var ratio = containerW / textW;
+      var newSize = Math.max(baseFontSize * ratio, minFontSize);
+      heading.style.fontSize = newSize + "rem";
+    }
+  }
+
+  var textIdx = 0;
+  var charIdx = 0;
+  var isDeleting = false;
 
   function type() {
-    const current = texts[textIdx];
+    var current = texts[textIdx];
 
     if (isDeleting) {
       charIdx--;
@@ -27,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
       el.textContent = current.substring(0, charIdx);
     }
 
-    // 打完 → 停留 2s → 开始删除
+    fitText();
+
     if (!isDeleting && charIdx === current.length) {
       setTimeout(function () {
         isDeleting = true;
@@ -36,108 +61,100 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // 删完 → 切换下一条
     if (isDeleting && charIdx === 0) {
       isDeleting = false;
       textIdx = (textIdx + 1) % texts.length;
+      // 切换时重置字号
+      heading.style.fontSize = baseFontSize + "rem";
     }
 
     setTimeout(type, isDeleting ? 40 : 100);
   }
 
   type();
+
+  // 窗口缩放时也重新适配
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitText, 100);
+  });
 });
 
 /**
- * 站点统计
- * 遍历导航链接来计算页面数，计算运行天数等
+ * 站点统计 — 点击展开一行文字
  */
 document.addEventListener("DOMContentLoaded", function () {
-  // ── 站点创建日期（手动设定）──
   var SITE_CREATED = new Date("2026-02-11");
+  var statsText = document.getElementById("stats-text");
+  if (!statsText) return;
 
-  // 笔记总数：统计导航中的所有页面链接
-  var statPages = document.getElementById("stat-pages");
-  if (statPages) {
-    // 通过 sitemap 或导航链接计数
-    var navLinks = document.querySelectorAll(".md-nav__link[href]");
-    var uniquePages = new Set();
-    navLinks.forEach(function (a) {
-      var href = a.getAttribute("href");
-      if (href && !href.startsWith("#") && !href.startsWith("http")) {
-        // 标准化路径
-        uniquePages.add(href.replace(/\/$/, "").replace(/index\.html$/, ""));
-      }
-    });
-    // 至少显示已知的页面数
-    var pageCount = Math.max(uniquePages.size, 1);
-    statPages.textContent = pageCount;
+  // 笔记总数
+  var navLinks = document.querySelectorAll(".md-nav__link[href]");
+  var uniquePages = new Set();
+  navLinks.forEach(function (a) {
+    var href = a.getAttribute("href");
+    if (href && !href.startsWith("#") && !href.startsWith("http")) {
+      uniquePages.add(href.replace(/\/$/, "").replace(/index\.html$/, ""));
+    }
+  });
+  var pageCount = Math.max(uniquePages.size, 1);
+
+  // 运行时间
+  var now = new Date();
+  var diffMs = now - SITE_CREATED;
+  var days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var mins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+  var uptimeStr;
+  if (days > 365) {
+    var years = Math.floor(days / 365);
+    var remDays = days % 365;
+    uptimeStr = years + " 年 " + remDays + " 天 " + hours + " 小时 " + mins + " 分钟";
+  } else {
+    uptimeStr = days + " 天 " + hours + " 小时 " + mins + " 分钟";
   }
 
-  // 总字数：通过 fetch 所有导航中的页面来统计
-  var statWords = document.getElementById("stat-words");
-  if (statWords) {
-    statWords.textContent = "统计中...";
-    // 获取 sitemap
-    fetch(window.location.origin + "/sitemap.xml")
-      .then(function (r) { return r.text(); })
-      .then(function (xml) {
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(xml, "text/xml");
-        var locs = doc.querySelectorAll("loc");
-        var urls = [];
-        locs.forEach(function (loc) { urls.push(loc.textContent); });
+  statsText.textContent =
+    "页面总数: " + pageCount +
+    " / 网站运行时间: " + uptimeStr;
 
-        // 并行 fetch 所有页面，提取文本字数
-        return Promise.all(urls.map(function (url) {
-          return fetch(url)
-            .then(function (r) { return r.text(); })
-            .then(function (html) {
-              var tmp = document.createElement("div");
-              tmp.innerHTML = html;
-              var content = tmp.querySelector(".md-content");
-              if (!content) return 0;
-              var text = content.textContent || "";
-              // 中英混合字数统计
-              var cn = (text.match(/[\u4e00-\u9fff]/g) || []).length;
-              var en = (text.match(/[a-zA-Z]+/g) || []).length;
-              return cn + en;
-            })
-            .catch(function () { return 0; });
-        }));
-      })
-      .then(function (counts) {
-        var total = counts.reduce(function (a, b) { return a + b; }, 0);
-        if (total > 10000) {
-          statWords.textContent = (total / 10000).toFixed(1) + " 万";
-        } else if (total > 1000) {
-          statWords.textContent = (total / 1000).toFixed(1) + "k";
-        } else {
-          statWords.textContent = total;
-        }
-      })
-      .catch(function () {
-        statWords.textContent = "—";
-      });
-  }
+  // 字数统计（异步）
+  fetch(window.location.origin + "/sitemap.xml")
+    .then(function (r) { return r.text(); })
+    .then(function (xml) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(xml, "text/xml");
+      var locs = doc.querySelectorAll("loc");
+      var urls = [];
+      locs.forEach(function (loc) { urls.push(loc.textContent); });
 
-  // 创建时间
-  var statCreated = document.getElementById("stat-created");
-  if (statCreated) {
-    statCreated.textContent = SITE_CREATED.toISOString().split("T")[0];
-  }
-
-  // 最近更新时间（取当前日期作为近似）
-  var statUpdated = document.getElementById("stat-updated");
-  if (statUpdated) {
-    statUpdated.textContent = new Date().toISOString().split("T")[0];
-  }
-
-  // 运行天数
-  var statUptime = document.getElementById("stat-uptime");
-  if (statUptime) {
-    var now = new Date();
-    var diff = Math.floor((now - SITE_CREATED) / (1000 * 60 * 60 * 24));
-    statUptime.textContent = diff + " 天";
-  }
+      return Promise.all(urls.map(function (url) {
+        return fetch(url)
+          .then(function (r) { return r.text(); })
+          .then(function (html) {
+            var tmp = document.createElement("div");
+            tmp.innerHTML = html;
+            var content = tmp.querySelector(".md-content");
+            if (!content) return 0;
+            var text = content.textContent || "";
+            var cn = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+            var en = (text.match(/[a-zA-Z]+/g) || []).length;
+            return cn + en;
+          })
+          .catch(function () { return 0; });
+      }));
+    })
+    .then(function (counts) {
+      var total = counts.reduce(function (a, b) { return a + b; }, 0);
+      var wordStr = total > 10000
+        ? (total / 10000).toFixed(1) + " 万"
+        : total.toLocaleString();
+      statsText.textContent =
+        "页面总数: " + pageCount +
+        " / 总字数: " + wordStr +
+        " / 网站运行时间: " + uptimeStr;
+    })
+    .catch(function () { /* keep current text */ });
 });

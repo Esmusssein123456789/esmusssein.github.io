@@ -27,8 +27,10 @@ hide:
 <div class="quote-card">
   <div class="quote-deco">"</div>
   <p class="quote-body">
-    知止而后有定，定而后能静，<br>
-    静而后能安，安而后能虑，<br>
+    知止而后有定，<br>
+    定而后能静，<br>
+    静而后能安，<br>
+    安而后能虑，<br>
     虑而后能得。
   </p>
   <p class="quote-source">——《大学》</p>
@@ -51,46 +53,22 @@ hide:
 
 </div>
 
-<p class="changelog-link-wrap">
-  <a href="changelog.md" class="changelog-link">:material-history: 查看完整更新记录 →</a>
-</p>
+[:material-history: 查看完整更新记录](changelog.md){ .changelog-btn }
 
 ---
 
 ## :material-chart-box: 站点统计 { #site-stats }
 
-<div class="stats-grid">
-  <div class="stat-card">
-    <div class="stat-icon">📄</div>
-    <div class="stat-value" id="stat-pages">—</div>
-    <div class="stat-label">笔记总数</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon">✏️</div>
-    <div class="stat-value" id="stat-words">—</div>
-    <div class="stat-label">总字数</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon">🎂</div>
-    <div class="stat-value" id="stat-created">—</div>
-    <div class="stat-label">创建时间</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon">📅</div>
-    <div class="stat-value" id="stat-updated">—</div>
-    <div class="stat-label">最近更新</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon">⏳</div>
-    <div class="stat-value" id="stat-uptime">—</div>
-    <div class="stat-label">已运行</div>
-  </div>
-</div>
+<details class="site-stats-details">
+<summary>📊 点击查看站点统计</summary>
+<p id="stats-text" class="stats-inline">加载中...</p>
+</details>
 
 ---
 
-## :material-account: 关于我
+## :material-account: 关于我 { #about }
 
+<div class="about-center" markdown>
 <div class="grid cards" markdown>
 
 -   :material-heart: __nian__
@@ -104,6 +82,7 @@ hide:
     - :material-map-marker: 坐标：中国
     - :material-telescope: 研究方向：具身智能
 
+</div>
 </div>
 
 </div>
