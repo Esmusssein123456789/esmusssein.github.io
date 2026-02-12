@@ -50,14 +50,15 @@
 
 /* 打字机逐行打印区域 */
 .typewriter-lines {
-  min-height: 6rem;
+  min-height: 5.5rem;
   margin-bottom: 0.5rem;
 }
 
 .typewriter-line {
   font-size: 2rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.6;
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--hero-gradient-start), var(--md-accent-fg-color));
   -webkit-background-clip: text;
   background-clip: text;
@@ -69,7 +70,6 @@
   -webkit-text-fill-color: var(--md-accent-fg-color);
   animation: blink 1s step-end infinite;
   font-weight: 100;
-  font-size: 2rem;
 }
 @keyframes blink {
   50% { opacity: 0; }
@@ -149,36 +149,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  margin: 1rem auto;
-  font-size: 0.95rem;
+  gap: 0.5rem;
+  margin: 1.5rem auto;
+  flex-wrap: wrap;
 }
 
 .quick-link-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--md-typeset-a-color);
+  gap: 0.4rem;
+  color: var(--md-typeset-color);
   text-decoration: none;
   font-weight: 500;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  transition: background 0.2s, opacity 0.2s;
+  font-size: 0.88rem;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--stat-card-border);
+  background: var(--stat-card-bg);
+  transition: all 0.25s ease;
   cursor: pointer;
 }
 .quick-link-item:hover {
-  background: var(--stat-card-bg);
-  opacity: 0.85;
+  border-color: var(--md-primary-fg-color);
+  color: var(--md-primary-fg-color);
+  box-shadow: 0 2px 12px rgba(57, 73, 171, 0.12);
+  transform: translateY(-1px);
 }
 
 .quick-link-icon {
-  font-size: 1.05rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.quick-link-text {
+  letter-spacing: 0.02em;
 }
 
 .quick-link-sep {
-  opacity: 0.3;
+  opacity: 0.2;
   font-weight: 300;
   user-select: none;
+  font-size: 0.8rem;
 }
 
 /* ============================================================
@@ -186,17 +197,31 @@
    ============================================================ */
 .stats-panel {
   text-align: center;
-  margin: 0 auto;
-  max-width: 600px;
+  margin: 0.5rem auto 0;
+  max-width: 500px;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--stat-card-border);
+  background: var(--stat-card-bg);
+  animation: statsFadeIn 0.3s ease;
 }
 
-.stats-inline {
+@keyframes statsFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.stats-lines {
   margin: 0;
+}
+
+.stats-line {
+  margin: 0.2rem 0;
   font-size: 0.82rem;
   font-family: "JetBrains Mono", "Noto Sans SC", monospace;
-  opacity: 0.6;
+  opacity: 0.65;
   letter-spacing: 0.02em;
-  padding: 0.5rem 0;
+  line-height: 1.7;
 }
 
 /* ============================================================
@@ -356,11 +381,8 @@
     font-size: 0.9rem;
     letter-spacing: 0.06em;
   }
-  .typewriter-line {
-    font-size: 1.4rem;
-  }
   .typewriter-lines {
-    min-height: 4.5rem;
+    min-height: 4rem;
   }
 }
 

@@ -16,9 +16,6 @@ hide:
 
 欢迎来到nian的笔记本
 
-[开始探索 :material-arrow-right:](#quick-links){ .md-button .md-button--primary }
-[GitHub :fontawesome-brands-github:](https://github.com/alannian){ .md-button }
-
 </div>
 </section>
 
@@ -44,18 +41,25 @@ hide:
 
 <div class="quick-links" id="quick-links">
   <a href="Website/changelog/" class="quick-link-item">
-    <span class="quick-link-icon">🕐</span>
+    <span class="quick-link-icon">⏱</span>
     <span class="quick-link-text">最近更新</span>
   </a>
-  <span class="quick-link-sep">/</span>
+  <span class="quick-link-sep">·</span>
   <a href="javascript:void(0)" class="quick-link-item" id="toggle-stats">
-    <span class="quick-link-icon">📊</span>
+    <span class="quick-link-icon">📈</span>
     <span class="quick-link-text">站点统计</span>
+  </a>
+  <span class="quick-link-sep">·</span>
+  <a href="https://github.com/alannian" class="quick-link-item" target="_blank" rel="noopener">
+    <span class="quick-link-icon">🔗</span>
+    <span class="quick-link-text">GitHub</span>
   </a>
 </div>
 
 <div id="stats-panel" class="stats-panel" style="display:none;">
-  <p id="stats-text" class="stats-inline">加载中...</p>
+  <div id="stats-text" class="stats-lines">
+    <p class="stats-line">加载中...</p>
+  </div>
 </div>
 
 </div>

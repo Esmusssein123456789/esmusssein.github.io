@@ -15,6 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
   var charIdx = 0;
   var cursorSpan = null;
 
+  var baseFontSize = 2; // rem
+  var minFontSize = 1;  // rem
+
+  function fitLine(lineEl) {
+    var parentW = container.offsetWidth;
+    if (parentW <= 0) return;
+    // 先重置到基础字号测量
+    lineEl.style.fontSize = baseFontSize + "rem";
+    var textW = lineEl.scrollWidth;
+    if (textW > parentW) {
+      var newSize = Math.max(baseFontSize * (parentW / textW) * 0.98, minFontSize);
+      lineEl.style.fontSize = newSize + "rem";
+    }
+  }
+
   function createLine() {
     var lineEl = document.createElement("div");
     lineEl.className = "typewriter-line";
@@ -36,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (charIdx <= currentLine.length) {
       currentTextEl.textContent = currentLine.substring(0, charIdx);
+      fitLine(currentTextEl.parentElement);
       charIdx++;
       setTimeout(type, 100);
     } else {
@@ -55,6 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   type();
+
+  // 窗口缩放时重新适配所有已打出的行
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      var allLines = container.querySelectorAll(".typewriter-line");
+      allLines.forEach(function (line) { fitLine(line); });
+    }, 120);
+  });
 });
 
 /**
@@ -110,9 +136,9 @@ document.addEventListener("DOMContentLoaded", function () {
       uptimeStr = days + " 天 " + hours + " 小时 " + mins + " 分钟";
     }
 
-    statsText.textContent =
-      "📄 页面总数: " + pageCount +
-      " / ⏱ 运行时间: " + uptimeStr;
+    statsText.innerHTML =
+      '<p class="stats-line">📄 页面总数: ' + pageCount + '</p>' +
+      '<p class="stats-line">⏱ 运行时间: ' + uptimeStr + '</p>';
 
     // 字数统计（异步）
     fetch(window.location.origin + "/sitemap.xml")
@@ -145,10 +171,10 @@ document.addEventListener("DOMContentLoaded", function () {
         var wordStr = total > 10000
           ? (total / 10000).toFixed(1) + " 万"
           : total.toLocaleString();
-        statsText.textContent =
-          "📄 页面总数: " + pageCount +
-          " / ✏️ 总字数: " + wordStr +
-          " / ⏱ 运行时间: " + uptimeStr;
+        statsText.innerHTML =
+          '<p class="stats-line">📄 页面总数: ' + pageCount + '</p>' +
+          '<p class="stats-line">✏️ 总字数: ' + wordStr + '</p>' +
+          '<p class="stats-line">⏱ 运行时间: ' + uptimeStr + '</p>';
       })
       .catch(function () { /* keep current text */ });
   }
