@@ -143,8 +143,17 @@ extra:
 # 导航结构
 # ──────────────────────────────────────────────
 nav:
-  - 首页: index.md
-  - 学习笔记:
+  - Home: index.md
+  - Robotics:
+      - Robotics/index.md
+  - AI:
+      - AI/index.md
       - Python: 学习笔记/python.md
-  - 更新记录: changelog.md
-  - 写作指南: user.md
+  - Life:
+      - Life/index.md
+  - Website:
+      - Website/index.md
+      - 写作指南: user.md
+      - 更新记录: changelog.md
+  - Others:
+      - Others/index.md

@@ -9,14 +9,14 @@ hide:
 <section class="hero-section" markdown>
 <div class="hero-content" markdown>
 
-# <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+<div id="typewriter-lines" class="typewriter-lines"></div>
 
-**Robotics · AI · Life**
+**Robotics · AI · Life · Others**
 { .hero-subtitle }
 
 欢迎来到nian的笔记本
 
-[开始探索 :material-arrow-right:](#recent-updates){ .md-button .md-button--primary }
+[开始探索 :material-arrow-right:](#quick-links){ .md-button .md-button--primary }
 [GitHub :fontawesome-brands-github:](https://github.com/alannian){ .md-button }
 
 </div>
@@ -38,51 +38,24 @@ hide:
 
 ---
 
-<!-- ==================== 主体内容居中容器 ==================== -->
+<!-- ==================== 快捷链接 ==================== -->
 
 <div class="home-center-wrapper" markdown>
 
-## :material-update: 最近更新 { #recent-updates }
-
-<div class="update-table-wrapper" markdown>
-
-| 日期 | 更新内容 | 链接 |
-| :--- | :--- | :---: |
-| 2026-02-11 | :pencil: 新增 Python 学习笔记 | [:octicons-arrow-right-24: 查看](学习笔记/python.md) |
-| 2026-02-11 | :tada: 知识库正式上线！ | — |
-
+<div class="quick-links" id="quick-links">
+  <a href="changelog/" class="quick-link-item">
+    <span class="quick-link-icon">🕐</span>
+    <span class="quick-link-text">最近更新</span>
+  </a>
+  <span class="quick-link-sep">/</span>
+  <a href="javascript:void(0)" class="quick-link-item" id="toggle-stats">
+    <span class="quick-link-icon">📊</span>
+    <span class="quick-link-text">站点统计</span>
+  </a>
 </div>
 
-[:material-history: 查看完整更新记录](changelog.md){ .changelog-btn }
-
----
-
-## :material-chart-box: 站点统计 { #site-stats }
-
-<details class="site-stats-details">
-<summary>📊 点击查看站点统计</summary>
-<p id="stats-text" class="stats-inline">加载中...</p>
-</details>
-
----
-
-## :material-account: 关于我 { #about }
-
-<div class="about-center" markdown>
-<div class="grid cards" markdown>
-
--   :material-heart: __nian__
-
-    ---
-
-    一名正在摸索 **LLM** 和**具身智能**的研究生。
-
-    热爱探索技术边界，相信记录是最好的学习方式。
-
-    - :material-map-marker: 坐标：中国
-    - :material-telescope: 研究方向：具身智能
-
-</div>
+<div id="stats-panel" class="stats-panel" style="display:none;">
+  <p id="stats-text" class="stats-inline">加载中...</p>
 </div>
 
 </div>
