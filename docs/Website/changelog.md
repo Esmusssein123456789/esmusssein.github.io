@@ -15,7 +15,9 @@ changelog: True
 ---
 
 !!! tip "如何维护更新记录"
-    编辑 `docs/changelog.yml` 文件，按如下格式添加条目即可，插件会自动生成时间线：
+    本页由 [mkdocs-changelog-plugin](https://github.com/TonyCrane/mkdocs-changelog-plugin) 自动渲染，**但数据需要手动维护**。
+    
+    每次发布新笔记后，编辑项目根目录的 `changelog.yml`，在最新日期下添加条目即可：
     ```yaml
     - "changelog":
       - "2026-03-15":
@@ -23,13 +25,6 @@ changelog: True
             text: "页面名称"
             href: /板块/页面/
         - "pageupdate": 更新了某某内容
-        - "feature": 新增了某某功能
     ```
     
-    可用的更新类型：
-    
-    | 类型 | 说明 |
-    | :--- | :--- |
-    | `newpage` | 新增页面 |
-    | `pageupdate` | 页面更新 |
-    | `feature` | 功能性更新 |
+    详细说明请参考 [操作流程 > 更新记录](workflow.md#6)。

@@ -14,10 +14,6 @@
   --stat-card-bg: #f8f9fc;
   --stat-card-border: #e8eaf6;
   --stat-card-hover-shadow: 0 8px 24px rgba(57, 73, 171, 0.1);
-  --timeline-line: #c5cae9;
-  --timeline-dot: #3949ab;
-  --timeline-card-bg: #ffffff;
-  --timeline-card-border: #e8eaf6;
 }
 [data-md-color-scheme="slate"] {
   --hero-gradient-start: #5c6bc0;
@@ -29,10 +25,6 @@
   --stat-card-bg: #1e1e2e;
   --stat-card-border: #2d2d44;
   --stat-card-hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  --timeline-line: #3949ab;
-  --timeline-dot: #7986cb;
-  --timeline-card-bg: #1e1e2e;
-  --timeline-card-border: #2d2d44;
 }
 
 /* ============================================================
@@ -235,92 +227,142 @@
 }
 
 /* ============================================================
-   更新记录时间线
+   更新记录时间线（覆盖 changelog 插件默认样式）
    ============================================================ */
-.timeline {
-  position: relative;
-  padding-left: 2rem;
-  margin: 1.5rem 0;
+
+/* 时间线外层 */
+.timeline-wrapper {
+  padding: 10px 5px 20px 0;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 0.55rem;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--timeline-line);
-  border-radius: 2px;
+/* 左侧竖线 */
+.timeline-wrapper::before {
+  width: 2px;
+  left: 18px;
+  background-image: linear-gradient(
+    to top,
+    var(--md-default-bg-color),
+    var(--stat-card-border) 80px
+  );
 }
 
+/* 时间线结点 */
 .timeline-item {
-  position: relative;
-  margin-bottom: 1.5rem;
-  padding-left: 1rem;
+  margin-bottom: 0.8em;
 }
 
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -1.65rem;
-  top: 0.45rem;
+.timeline-dot-wrapper {
+  width: 50px;
+}
+
+.timeline-dot {
+  left: 10px;
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  background: var(--timeline-dot);
-  border: 3px solid var(--md-default-bg-color);
-  box-shadow: 0 0 0 3px var(--timeline-line);
+  background: var(--stat-card-border);
+  box-shadow: 0 0 0 4px var(--md-default-bg-color);
 }
 
-.timeline-date {
-  font-size: 0.95rem;
+/* 去掉丑陋的三角箭头 */
+.timeline-content::before {
+  display: none;
+}
+
+/* 卡片样式：白色背景 + 细边框 */
+.timeline-card {
+  background-color: var(--md-default-bg-color);
+  border: 1px solid var(--stat-card-border);
+  border-radius: 10px;
+  padding: 14px 18px 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+.timeline-card:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 日期 */
+.changelog-time {
+  font-size: 1.05em;
   font-weight: 600;
-  color: var(--md-primary-fg-color);
-  margin-bottom: 0.5rem;
+  color: var(--md-default-fg-color);
   font-family: "JetBrains Mono", monospace;
 }
 
-.timeline-card {
-  background: var(--timeline-card-bg);
-  border: 1px solid var(--timeline-card-border);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  margin-bottom: 0.15rem;
+.changelog-time .headerlink {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.changelog-time:hover .headerlink {
+  opacity: 0.5;
 }
 
-.timeline-card .timeline-tag {
-  display: inline-block;
-  font-size: 0.7rem;
+/* 更新内容 */
+.changelog-content {
+  margin-top: 8px;
+}
+
+.changelog-content p {
+  margin: 4px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
+}
+
+.changelog-content a {
+  color: var(--md-typeset-a-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--md-typeset-a-color);
+}
+.changelog-content a:hover {
+  border-bottom-style: solid;
+}
+
+/* 更新类型标签 */
+.changelog-type {
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 0.15rem 0.5rem;
+  padding: 2px 8px;
   border-radius: 4px;
-  margin-right: 0.5rem;
+  color: #fff;
+  margin-right: 6px;
   vertical-align: middle;
+  display: inline-block;
+  line-height: 1.5;
 }
 
-.timeline-tag.page-update {
-  background: #42a5f5;
-  color: #fff;
+.changelog-type-newpage {
+  background-color: rgba(102, 187, 106, 0.75);
 }
-.timeline-tag.new-page {
-  background: #66bb6a;
-  color: #fff;
-}
-.timeline-tag.feature {
-  background: #ef5350;
-  color: #fff;
-}
-.timeline-tag.fix {
-  background: #ffa726;
-  color: #fff;
+.changelog-type-newpage::before {
+  content: "新增页面";
 }
 
-.timeline-year {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 2rem 0 1rem;
-  padding-left: 0;
+.changelog-type-pageupdate {
+  background-color: rgba(66, 165, 245, 0.75);
+}
+.changelog-type-pageupdate::before {
+  content: "页面更新";
+}
+
+.changelog-type-function {
+  background-color: rgba(239, 83, 80, 0.65);
+}
+.changelog-type-function::before {
+  content: "功能性更新";
+}
+
+/* 通用 fallback */
+.changelog-type::before {
+  content: "更新";
+}
+
+/* 暗色模式微调 */
+[data-md-color-scheme="slate"] .timeline-card {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+}
+[data-md-color-scheme="slate"] .timeline-card:hover {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* ============================================================

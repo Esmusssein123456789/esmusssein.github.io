@@ -161,28 +161,55 @@ mkdocs serve
 
 ## 6. 更新记录
 
-每次添加或修改笔记后，建议顺手更新更新记录。
+!!! warning "注意：需要手动维护"
+    更新记录**不会自动生成**。每次发布新笔记或重要修改后，需要手动编辑 `changelog.yml` 添加一条记录。  
+    插件的作用是将 YAML 数据**自动渲染成漂亮的时间线**，省去你手写 HTML 的麻烦。
 
-打开项目根目录的 `changelog.yml`，在最新日期下添加条目：
+### 操作步骤
+
+1. 打开项目**根目录**（不是 `docs/` 下）的 `changelog.yml`
+2. 在**最新日期**位置添加条目（日期从新到旧排列）
+3. 保存后 `git push` 即可
+
+### 文件格式详解
 
 ```yaml title="changelog.yml"
-- "changelog":
+- "changelog":                           # (1)!
+  - "2026-02-15":                        # (2)!
+    - "newpage":                         # (3)!
+        text: "SLAM 学习笔记"            # (4)!
+        href: /Robotics/slam/
+    - "pageupdate": 更新了 Python 笔记    # (5)!
+    - "function": 新增暗色模式切换按钮     # (6)!
   - "2026-02-12":
     - "newpage":
-        text: "SLAM 学习笔记"
-        href: /Robotics/slam/
-    - "pageupdate": 更新了 Python 笔记内容
+        text: "操作流程"
+        href: /Website/workflow/
+    - "feature": 首页布局优化
   - "2026-02-11":
     - "feature": 网站正式上线
 ```
 
-可用的更新类型：
+1. `"changelog"` 是占位符名称，对应 `changelog.md` 中的 `{{ changelog }}`
+2. 日期从新到旧排列，格式为 `YYYY-MM-DD`
+3. 更新类型关键字（见下表）
+4. 带链接的写法：用 `text` + `href` 两个字段
+5. 纯文字的写法：直接在类型后写内容
+6. `function` 和 `feature` 都是功能性更新的类型
 
-| 类型 | 说明 |
-| :--- | :--- |
-| `newpage` | 新增页面（支持 text + href 添加链接） |
-| `pageupdate` | 页面更新 |
-| `feature` | 功能性更新 |
+### 可用的更新类型
+
+| 类型关键字 | 显示文字 | 颜色 | 用途 |
+| :--- | :--- | :--- | :--- |
+| `newpage` | 新增页面 | 🟢 绿色 | 新建了一个页面 |
+| `pageupdate` | 页面更新 | 🔵 蓝色 | 修改了已有页面内容 |
+| `function` | 功能性更新 | 🔴 红色 | 网站功能改动 |
+| `feature` | 更新 | 🔵 蓝色(默认) | 通用更新 |
+
+!!! tip "小贴士"
+    - 只记录**比较重要**的更新，修个错别字就不用记了
+    - 新增页面建议用带链接的写法，方便读者直接跳转
+    - 日期相同的多条更新写在同一个日期下即可
 
 ---
 
