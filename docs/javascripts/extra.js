@@ -131,9 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (days > 365) {
       var years = Math.floor(days / 365);
       var remDays = days % 365;
-      uptimeStr = years + " 年 " + remDays + " 天 " + hours + " 小时 " + mins + " 分钟";
+      uptimeStr = years + "y " + remDays + "d " + hours + "h " + mins + "m";
     } else {
-      uptimeStr = days + " 天 " + hours + " 小时 " + mins + " 分钟";
+      uptimeStr = days + "d " + hours + "h " + mins + "m";
     }
 
     statsText.innerHTML =

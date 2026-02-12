@@ -75,17 +75,24 @@
   50% { opacity: 0; }
 }
 
-/* 副标题 */
-.hero-subtitle {
-  font-size: 1.1rem;
-  opacity: 0.85;
-  margin-top: -0.25rem;
+/* 欢迎语 */
+.hero-welcome {
+  margin: 0.5rem 0 0.8rem;
 }
 
-/* Hero 按钮间距 */
-.hero-content .md-button {
-  margin: 0.5rem 0.3rem;
-  border-radius: 8px;
+.welcome-kaomoji {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+  color: var(--md-accent-fg-color);
+  letter-spacing: 0.04em;
+}
+
+.welcome-text {
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
 }
 
 /* ============================================================
@@ -151,23 +158,24 @@
   justify-content: center;
   gap: 0.5rem;
   margin: 1.5rem auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .quick-link-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   color: var(--md-typeset-color);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.88rem;
-  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   border: 1px solid var(--stat-card-border);
   background: var(--stat-card-bg);
   transition: all 0.25s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 .quick-link-item:hover {
   border-color: var(--md-primary-fg-color);
@@ -176,9 +184,11 @@
   transform: translateY(-1px);
 }
 
-.quick-link-icon {
-  font-size: 1rem;
-  line-height: 1;
+.ql-icon {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .quick-link-text {
@@ -186,10 +196,10 @@
 }
 
 .quick-link-sep {
-  opacity: 0.2;
+  opacity: 0.15;
   font-weight: 300;
   user-select: none;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* ============================================================
