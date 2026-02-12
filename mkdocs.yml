@@ -43,7 +43,6 @@ theme:
     - navigation.tabs          # 顶部导航标签页
     - navigation.tabs.sticky   # 标签页滚动时固定
     - navigation.top           # 回到顶部按钮
-    - navigation.sections      # 侧边栏按分区展示
     - navigation.indexes       # 分区可关联 index 页
     - navigation.footer        # 底部上/下页导航
     - header.autohide          # 向下滚动时自动隐藏顶栏
@@ -168,8 +167,11 @@ nav:
   - AI:
       - AI/index.md
       - LLM: AI/LLM/index.md
+      - CV: AI/CV/index.md
   - Life:
       - Life/index.md
+      - Books: Life/Books/index.md
+      - Piano: Life/Piano/index.md
   - Website:
       - Website/index.md
       - 写作指南: Website/user.md
