@@ -12,8 +12,7 @@ hide:
 <div id="typewriter-lines" class="typewriter-lines"></div>
 
 <div class="hero-welcome">
-  <p class="welcome-kaomoji">o(〃'▽'〃)o Hi!</p>
-  <p class="welcome-text">这里是 nian 的个人笔记本哦！</p>
+  <p class="welcome-text">o(〃'▽'〃)o Hi! 这里是 nian 的个人笔记本哦！</p>
 </div>
 
 </div>

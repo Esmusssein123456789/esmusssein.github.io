@@ -161,28 +161,28 @@ mkdocs serve
 
 ## 6. 更新记录
 
-每次添加或修改笔记后，建议顺手更新 [更新记录](changelog.md)，记录变更内容。
+每次添加或修改笔记后，建议顺手更新更新记录。
 
-打开 `docs/Website/changelog.md`，在最新日期下添加条目：
+打开项目根目录的 `changelog.yml`，在最新日期下添加条目：
 
-```html
-<div class="timeline-item">
-  <div class="timeline-date">2026-02-12</div>
-  <div class="timeline-card">
-    <span class="timeline-tag new-page">NEW</span>
-    新增 SLAM 学习笔记
-  </div>
-</div>
+```yaml title="changelog.yml"
+- "changelog":
+  - "2026-02-12":
+    - "newpage":
+        text: "SLAM 学习笔记"
+        href: /Robotics/slam/
+    - "pageupdate": 更新了 Python 笔记内容
+  - "2026-02-11":
+    - "feature": 网站正式上线
 ```
 
-可用的标签类型：
+可用的更新类型：
 
-| 标签 | 样式类名 | 用途 |
-| :--- | :--- | :--- |
-| NEW | `new-page` | 新建页面 |
-| UPDATE | `page-update` | 更新已有页面 |
-| FEATURE | `feature` | 站点新功能 |
-| FIX | `fix` | 修复问题 |
+| 类型 | 说明 |
+| :--- | :--- |
+| `newpage` | 新增页面（支持 text + href 添加链接） |
+| `pageupdate` | 页面更新 |
+| `feature` | 功能性更新 |
 
 ---
 

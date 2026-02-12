@@ -129,6 +129,8 @@ markdown_extensions:
 # ──────────────────────────────────────────────
 plugins:
   - search
+  - changelog:
+      file: changelog.yml
 
 # ──────────────────────────────────────────────
 # 社交链接 & 页脚
@@ -138,6 +140,8 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/alannian
       name: GitHub
+
+copyright: Copyright &copy; 2026 nian · Powered by <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
 
 # ──────────────────────────────────────────────
 # 导航结构

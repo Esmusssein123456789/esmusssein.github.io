@@ -1,3 +1,7 @@
+---
+changelog: True
+---
+
 # :material-history: 更新记录
 
 !!! abstract "关于"
@@ -6,40 +10,26 @@
 
 ---
 
-<div class="timeline" markdown>
-
-## 2026
-
-<div class="timeline-item" markdown>
-<div class="timeline-date">2026-02-11</div>
-<div class="timeline-card" markdown>
-<span class="timeline-tag new-page">新增页面</span> 学习笔记 > <a href="学习笔记/python.md">Python 学习记录</a>
-</div>
-<div class="timeline-card" markdown>
-<span class="timeline-tag feature">功能更新</span> 网站正式上线，完成首页装修、主题配置、打字机效果
-</div>
-</div>
-
-</div>
+{{ changelog }}
 
 ---
 
-!!! tip "如何维护这个页面"
-    每次更新笔记后，在对应年份下添加一个 `timeline-item`，格式如下：
-    ```html
-    <div class="timeline-item" markdown>
-    <div class="timeline-date">2026-03-15</div>
-    <div class="timeline-card" markdown>
-    <span class="timeline-tag page-update">页面更新</span> 板块 > <a href="链接">页面名</a>（更新内容简述）
-    </div>
-    </div>
+!!! tip "如何维护更新记录"
+    编辑 `docs/changelog.yml` 文件，按如下格式添加条目即可，插件会自动生成时间线：
+    ```yaml
+    - "changelog":
+      - "2026-03-15":
+        - "newpage":
+            text: "页面名称"
+            href: /板块/页面/
+        - "pageupdate": 更新了某某内容
+        - "feature": 新增了某某功能
     ```
     
-    可用的标签类型：
+    可用的更新类型：
     
-    | 类名 | 颜色 | 用途 |
-    | :--- | :--- | :--- |
-    | `new-page` | :green_circle: 绿色 | 新增页面 |
-    | `page-update` | :blue_circle: 蓝色 | 页面更新 |
-    | `feature` | :red_circle: 红色 | 功能性更新 |
-    | `fix` | :orange_circle: 橙色 | 修复问题 |
+    | 类型 | 说明 |
+    | :--- | :--- |
+    | `newpage` | 新增页面 |
+    | `pageupdate` | 页面更新 |
+    | `feature` | 功能性更新 |
