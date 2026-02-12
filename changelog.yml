@@ -1,16 +1,16 @@
-- "changelog":
+- "2026":
   - "2026-02-12":
-    - "feature": 集成 mkdocs-changelog-plugin，更新记录改为 YAML 驱动自动生成
-    - "feature": 添加页脚版权声明
+    - "function": 集成 mkdocs-changelog-plugin，更新记录改为 YAML 驱动自动生成
+    - "function": 添加页脚版权声明
     - "pageupdate": 首页布局优化，压缩垂直间距
   - "2026-02-11":
     - "newpage":
-        text: "Python 学习笔记"
+        text: "AI > Python 学习笔记"
         href: /AI/python/
-    - "feature": 网站正式上线！完成首页装修、主题配置、打字机效果
+    - "function": 网站正式上线！完成首页装修、主题配置、打字机效果
     - "newpage":
-        text: "写作指南"
+        text: "Website > 写作指南"
         href: /Website/user/
     - "newpage":
-        text: "操作流程"
+        text: "Website > 操作流程"
         href: /Website/workflow/

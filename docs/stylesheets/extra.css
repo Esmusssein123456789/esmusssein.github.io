@@ -228,65 +228,102 @@
 
 /* ============================================================
    更新记录时间线（覆盖 changelog 插件默认样式）
+   所有关键属性使用 !important 确保覆盖 css/timeline.css
    ============================================================ */
 
-/* 时间线外层 */
+/* 时间线外层容器 */
 .timeline-wrapper {
-  padding: 10px 5px 20px 0;
+  padding: 10px 5px 20px 0 !important;
 }
 
-/* 左侧竖线 */
+/* 左侧竖线 — 单条细灰线 */
 .timeline-wrapper::before {
-  width: 2px;
-  left: 18px;
+  content: "" !important;
+  position: absolute !important;
+  width: 2px !important;
+  left: 18px !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
   background-image: linear-gradient(
     to top,
     var(--md-default-bg-color),
-    var(--stat-card-border) 80px
-  );
+    #d0d7de 80px
+  ) !important;
 }
 
-/* 时间线结点 */
+/* 时间线内部容器 */
+.timeline {
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* 条目间距 */
 .timeline-item {
-  margin-bottom: 0.8em;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0.8em !important;
 }
 
+/* 圆点容器 */
 .timeline-dot-wrapper {
-  width: 50px;
+  width: 50px !important;
 }
 
+/* 圆点 — 小灰圆 + 白色阴影圈 */
 .timeline-dot {
-  left: 10px;
-  width: 12px;
-  height: 12px;
-  background: var(--stat-card-border);
-  box-shadow: 0 0 0 4px var(--md-default-bg-color);
+  left: 10px !important;
+  position: relative !important;
+  width: 14px !important;
+  height: 14px !important;
+  border-radius: 50% !important;
+  background: #d0d7de !important;
+  box-shadow: 0 0 0 4px var(--md-default-bg-color) !important;
 }
 
-/* 去掉丑陋的三角箭头 */
+/* ★ 关键：彻底消除三角箭头 */
 .timeline-content::before {
-  display: none;
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-/* 卡片样式：白色背景 + 细边框 */
+/* 内容区域 */
+.timeline-content {
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* 卡片 — 浅灰背景 + 细边框 + 圆角 */
 .timeline-card {
-  background-color: var(--md-default-bg-color);
-  border: 1px solid var(--stat-card-border);
-  border-radius: 10px;
-  padding: 14px 18px 10px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  word-wrap: break-word !important;
+  background-color: #f6f8fa !important;
+  background-clip: border-box !important;
+  border: 1px solid #d0d7de !important;
+  border-radius: 10px !important;
+  padding: 14px 18px 10px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
   transition: box-shadow 0.2s ease;
 }
 .timeline-card:hover {
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* 日期 */
+/* 日期文字 */
 .changelog-time {
-  font-size: 1.05em;
-  font-weight: 600;
-  color: var(--md-default-fg-color);
+  font-size: 1.1em !important;
+  font-weight: 600 !important;
+  color: var(--md-default-fg-color) !important;
   font-family: "JetBrains Mono", monospace;
+}
+
+.changelog-time::before {
+  content: "🕙 " !important;
 }
 
 .changelog-time .headerlink {
@@ -299,70 +336,87 @@
 
 /* 更新内容 */
 .changelog-content {
-  margin-top: 8px;
+  margin-top: 8px !important;
 }
 
 .changelog-content p {
-  margin: 4px 0;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color);
+  margin-top: 0 !important;
+  margin-bottom: 5px !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  color: var(--md-default-fg-color) !important;
 }
 
 .changelog-content a {
-  color: var(--md-typeset-a-color);
-  text-decoration: none;
+  color: var(--md-typeset-a-color) !important;
+  text-decoration: none !important;
   border-bottom: 1px dashed var(--md-typeset-a-color);
 }
 .changelog-content a:hover {
   border-bottom-style: solid;
 }
 
-/* 更新类型标签 */
+/* 更新类型标签 — 通用样式 */
 .changelog-type {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
-  color: #fff;
-  margin-right: 6px;
-  vertical-align: middle;
-  display: inline-block;
-  line-height: 1.5;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+  border-radius: 4px !important;
+  color: #fff !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  line-height: 1.5 !important;
+  background-color: rgba(63, 110, 198, 0.75) !important;
 }
 
+/* 通用 fallback — 必须放在特定类型之前 */
+.changelog-type::before {
+  content: "更新" !important;
+}
+
+/* 特定类型 — 放在 fallback 之后，同优先级后者覆盖 */
 .changelog-type-newpage {
-  background-color: rgba(102, 187, 106, 0.75);
+  background-color: rgba(230, 173, 91, 0.85) !important;
 }
 .changelog-type-newpage::before {
-  content: "新增页面";
+  content: "新增页面" !important;
 }
 
 .changelog-type-pageupdate {
-  background-color: rgba(66, 165, 245, 0.75);
+  background-color: rgba(63, 110, 198, 0.75) !important;
 }
 .changelog-type-pageupdate::before {
-  content: "页面更新";
+  content: "页面更新" !important;
 }
 
 .changelog-type-function {
-  background-color: rgba(239, 83, 80, 0.65);
+  background-color: rgba(230, 105, 91, 0.78) !important;
 }
 .changelog-type-function::before {
-  content: "功能性更新";
+  content: "功能性更新" !important;
 }
 
-/* 通用 fallback */
-.changelog-type::before {
-  content: "更新";
+/* ── 暗色模式适配 ── */
+[data-md-color-scheme="slate"] .timeline-wrapper::before {
+  background-image: linear-gradient(
+    to top,
+    var(--md-default-bg-color),
+    #444d56 80px
+  ) !important;
 }
 
-/* 暗色模式微调 */
+[data-md-color-scheme="slate"] .timeline-dot {
+  background: #6a737d !important;
+}
+
 [data-md-color-scheme="slate"] .timeline-card {
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+  background-color: #2d333b !important;
+  border-color: #444d56 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
 }
 [data-md-color-scheme="slate"] .timeline-card:hover {
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* ============================================================

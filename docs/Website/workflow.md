@@ -174,42 +174,43 @@ mkdocs serve
 ### 文件格式详解
 
 ```yaml title="changelog.yml"
-- "changelog":                           # (1)!
+- "2026":                                # (1)!
   - "2026-02-15":                        # (2)!
     - "newpage":                         # (3)!
-        text: "SLAM 学习笔记"            # (4)!
+        text: "Robotics > SLAM 学习笔记" # (4)!
         href: /Robotics/slam/
     - "pageupdate": 更新了 Python 笔记    # (5)!
     - "function": 新增暗色模式切换按钮     # (6)!
   - "2026-02-12":
     - "newpage":
-        text: "操作流程"
+        text: "Website > 操作流程"
         href: /Website/workflow/
-    - "feature": 首页布局优化
+    - "function": 首页布局优化
   - "2026-02-11":
-    - "feature": 网站正式上线
+    - "function": 网站正式上线
 ```
 
-1. `"changelog"` 是占位符名称，对应 `changelog.md` 中的 `{{ changelog }}`
+1. 年份占位符，对应 `changelog.md` 中的 `## 2026` + `{{ 2026 }}`。新的一年需要在 `changelog.yml` 新增一个占位符，同时在 `changelog.md` 中添加 `## 年份` 标题和 `{{ 年份 }}`
 2. 日期从新到旧排列，格式为 `YYYY-MM-DD`
 3. 更新类型关键字（见下表）
-4. 带链接的写法：用 `text` + `href` 两个字段
+4. 带链接的写法：用 `text` + `href`，路径建议写成 `板块 > 页面名` 格式
 5. 纯文字的写法：直接在类型后写内容
-6. `function` 和 `feature` 都是功能性更新的类型
+6. `function` 表示功能性更新（网站配置、插件、样式等改动）
 
 ### 可用的更新类型
 
 | 类型关键字 | 显示文字 | 颜色 | 用途 |
 | :--- | :--- | :--- | :--- |
-| `newpage` | 新增页面 | 🟢 绿色 | 新建了一个页面 |
+| `newpage` | 新增页面 | 🟡 琥珀色 | 新建了一个页面 |
 | `pageupdate` | 页面更新 | 🔵 蓝色 | 修改了已有页面内容 |
 | `function` | 功能性更新 | 🔴 红色 | 网站功能改动 |
-| `feature` | 更新 | 🔵 蓝色(默认) | 通用更新 |
 
 !!! tip "小贴士"
     - 只记录**比较重要**的更新，修个错别字就不用记了
-    - 新增页面建议用带链接的写法，方便读者直接跳转
+    - 新增页面建议用带链接的写法（`text` + `href`），方便读者直接跳转
+    - `text` 中建议写全路径如 `AI > Python 学习笔记`，而不是仅 `Python 学习笔记`
     - 日期相同的多条更新写在同一个日期下即可
+    - 跨年时，在 `changelog.yml` 顶部新增 `- "2027":` 块，并在 `changelog.md` 中添加 `## 2027` + `{{ 2027 }}`
 
 ---
 
