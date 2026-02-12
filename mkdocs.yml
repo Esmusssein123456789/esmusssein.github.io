@@ -153,6 +153,7 @@ nav:
           - Robotics/ROS/index.md
           - ROS1: Robotics/ROS/ROS1/index.md
           - ROS2: Robotics/ROS/ROS2/index.md
+          - Linux: Robotics/ROS/Linux/index.md
       - 嵌入式:
           - Robotics/嵌入式/index.md
           - STM32: Robotics/嵌入式/STM32/index.md
@@ -172,6 +173,10 @@ nav:
       - Life/index.md
       - Books: Life/Books/index.md
       - Piano: Life/Piano/index.md
+  - Projects:
+      - Projects/index.md
+      - 半人型: Projects/半人型/index.md
+      - 灵巧手: Projects/灵巧手/index.md
   - Website:
       - Website/index.md
       - 写作指南: Website/user.md
