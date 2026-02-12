@@ -11,7 +11,7 @@ hide:
 
 # <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
 
-** Robotics · AI · Life**
+**Robotics · AI · Life**
 { .hero-subtitle }
 
 欢迎来到nian的笔记本
@@ -22,22 +22,16 @@ hide:
 </div>
 </section>
 
----
-
 <!-- ==================== 格言区域 ==================== -->
 
-<div class="quote-banner" markdown>
-<div class="quote-text" markdown>
-
-知止而后有定，定而后能静，<br>
-静而后能安，安而后能虑，<br>
-虑而后能得。
-{ .quote-body }
-
-——《大学》
-{ .quote-source }
-
-</div>
+<div class="quote-card">
+  <div class="quote-deco">"</div>
+  <p class="quote-body">
+    知止而后有定，定而后能静，<br>
+    静而后能安，安而后能虑，<br>
+    虑而后能得。
+  </p>
+  <p class="quote-source">——《大学》</p>
 </div>
 
 ---
@@ -48,49 +42,49 @@ hide:
 
 ## :material-update: 最近更新 { #recent-updates }
 
-[:material-history: 查看完整更新记录](changelog.md){ .changelog-link }
+<div class="update-table-wrapper" markdown>
 
 | 日期 | 更新内容 | 链接 |
 | :--- | :--- | :---: |
 | 2026-02-11 | :pencil: 新增 Python 学习笔记 | [:octicons-arrow-right-24: 查看](学习笔记/python.md) |
 | 2026-02-11 | :tada: 知识库正式上线！ | — |
 
+</div>
+
+<p class="changelog-link-wrap">
+  <a href="changelog.md" class="changelog-link">:material-history: 查看完整更新记录 →</a>
+</p>
+
 ---
 
 ## :material-chart-box: 站点统计 { #site-stats }
 
-<div class="stats-grid" markdown>
-
-<div class="stat-card">
-  <div class="stat-icon">:material-file-document-multiple:</div>
-  <div class="stat-value" id="stat-pages">—</div>
-  <div class="stat-label">笔记总数</div>
-</div>
-
-<div class="stat-card">
-  <div class="stat-icon">:material-text:</div>
-  <div class="stat-value" id="stat-words">—</div>
-  <div class="stat-label">总字数</div>
-</div>
-
-<div class="stat-card">
-  <div class="stat-icon">:material-calendar-star:</div>
-  <div class="stat-value" id="stat-created">—</div>
-  <div class="stat-label">创建时间</div>
-</div>
-
-<div class="stat-card">
-  <div class="stat-icon">:material-calendar-clock:</div>
-  <div class="stat-value" id="stat-updated">—</div>
-  <div class="stat-label">最近更新</div>
-</div>
-
-<div class="stat-card">
-  <div class="stat-icon">:material-timer-sand:</div>
-  <div class="stat-value" id="stat-uptime">—</div>
-  <div class="stat-label">已运行</div>
-</div>
-
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon">📄</div>
+    <div class="stat-value" id="stat-pages">—</div>
+    <div class="stat-label">笔记总数</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">✏️</div>
+    <div class="stat-value" id="stat-words">—</div>
+    <div class="stat-label">总字数</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">🎂</div>
+    <div class="stat-value" id="stat-created">—</div>
+    <div class="stat-label">创建时间</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">📅</div>
+    <div class="stat-value" id="stat-updated">—</div>
+    <div class="stat-label">最近更新</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">⏳</div>
+    <div class="stat-value" id="stat-uptime">—</div>
+    <div class="stat-label">已运行</div>
+  </div>
 </div>
 
 ---

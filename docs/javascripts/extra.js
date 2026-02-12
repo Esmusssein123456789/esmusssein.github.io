@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!el) return;
 
   const texts = [
-    "一念起 ✨",
+    "一念起，万水千山",
     "Keep Thinking, Keep Fighting",
     "Stay Hungry, Stay Foolish",
   ];
