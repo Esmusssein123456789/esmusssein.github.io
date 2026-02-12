@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var lines = [
     "一念起，万水千山",
     "Keep Thinking, Keep Fighting",
-    "Stay Foolish, Stay Hungry",
   ];
 
   var lineIdx = 0;

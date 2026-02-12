@@ -11,7 +11,7 @@ hide:
 
 <div id="typewriter-lines" class="typewriter-lines"></div>
 
-**Robotics · AI · Life · Others**
+**Robotics · AI · Life**
 { .hero-subtitle }
 
 欢迎来到nian的笔记本
@@ -43,7 +43,7 @@ hide:
 <div class="home-center-wrapper" markdown>
 
 <div class="quick-links" id="quick-links">
-  <a href="changelog/" class="quick-link-item">
+  <a href="Website/changelog/" class="quick-link-item">
     <span class="quick-link-icon">🕐</span>
     <span class="quick-link-text">最近更新</span>
   </a>
