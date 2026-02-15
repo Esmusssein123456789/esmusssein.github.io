@@ -169,6 +169,12 @@ nav:
       - AI/index.md
       - LLM: AI/LLM/index.md
       - CV: AI/CV/index.md
+      - 408:
+          - AI/408/index.md
+          - 数据结构: AI/408/数据结构/index.md
+          - 计算机组成原理: AI/408/计算机组成原理/index.md
+          - 操作系统: AI/408/操作系统/index.md
+          - 计算机网络: AI/408/计算机网络/index.md
   - Life:
       - Life/index.md
       - Books: Life/Books/index.md

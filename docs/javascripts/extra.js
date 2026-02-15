@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!container) return;
 
   var lines = [
-    "一念起，万水千山",
     "Keep Thinking, Keep Fighting",
   ];
 
