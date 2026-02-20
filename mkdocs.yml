@@ -161,7 +161,8 @@ nav:
   - AI:
       - AI/index.md
       - LLM: AI/LLM/index.md
-      - CV: AI/CV/index.md
+      - VLA: AI/VLA/index.md
+      - 强化学习: AI/强化学习/index.md
   - Website:
       - Website/index.md
       - 写作指南: Website/user.md
