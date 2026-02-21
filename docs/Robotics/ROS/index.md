@@ -82,6 +82,7 @@ sudo apt update                          # 更新软件源
 sudo apt install <package>               # 安装软件包
 sudo apt remove <package>                # 卸载
 dpkg -l | grep ros                       # 查看已安装的 ROS 包
+sudo dpkg -i 你的安装包名称.deb           # 安装已经下载好的软件
 pip install <package>                    # Python 包安装
 ```
 

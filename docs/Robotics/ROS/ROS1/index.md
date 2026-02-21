@@ -50,6 +50,10 @@ catkin_ws/
 ### 常用操作
 
 ```bash
+#进入ros1的工作空间（ros1安装在docker里）
+./start_ros1.sh
+cd /root/catkin_ws         #对应宿主机文件夹为ros1_ws
+
 # 创建工作空间
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws
@@ -97,7 +101,7 @@ graph LR
 ### 启动与运行
 
 ```bash
-roscore                                  # 启动 ROS Master（必须先启动）
+roscore                                  # 启动 ROS Master（必须先启动），启动后挂着不要关
 rosrun <pkg> <node>                      # 运行单个节点
 roslaunch <pkg> <file.launch>            # 用 launch 文件启动多个节点
 ```
@@ -165,8 +169,8 @@ rosdep install --from-paths src --ignore-src -r -y   # 安装所有依赖
 
 | 工具 | 命令 | 用途 |
 | :--- | :--- | :--- |
-| **RViz** | `rosrun rviz rviz` | 3D 可视化（TF、点云、路径等） |
-| **rqt_graph** | `rosrun rqt_graph rqt_graph` | 查看节点-话题连接关系图 |
+| **RViz** | `rviz` | 3D 可视化（TF、点云、路径等） |
+| **rqt_graph** | `rqt_graph` | 查看节点-话题连接关系图 |
 | **rqt_plot** | `rosrun rqt_plot rqt_plot` | 实时数据曲线绘图 |
 | **rqt_console** | `rosrun rqt_console rqt_console` | 日志查看器 |
 | **rqt_tf_tree** | `rosrun rqt_tf_tree rqt_tf_tree` | TF 坐标系树 |
@@ -179,6 +183,7 @@ rosbag record -a                         # 录制所有 topic
 rosbag record /topic1 /topic2 -O data    # 录制指定 topic，输出 data.bag
 rosbag info data.bag                     # 查看 bag 文件信息
 rosbag play data.bag                     # 回放
+rosbag play data.bag -l                  # 循环播放（loop）
 rosbag play data.bag -r 2                # 2 倍速回放
 rosbag play data.bag --clock             # 回放并发布仿真时钟
 ```
