@@ -511,71 +511,72 @@ Transformer
 <https://github.com/alannian>
 ```
 
-### 图片插入
+---
 
-#### 方式一：GitHub Issues 图床（推荐）
+### 插入图片
 
-适合大图和截图，不占仓库空间：
+!!! abstract "方案说明"
+    本站采用 **GitHub 图床 + jsDelivr CDN 加速**的自动化方案：
 
-1. 打开你仓库的任意 Issue 编辑框
-2. 直接**拖拽 / 粘贴**图片
-3. GitHub 自动生成链接，复制到 Markdown 中
+    | 组件 | 说明 |
+    | :--- | :--- |
+    | **存储端** | GitHub 公开仓库 `alannian/blog_image` |
+    | **分发端** | jsDelivr 全球 CDN，国内高速秒开 |
+    | **上传端** | VS Code **PicGo 插件**，剪贴板一键上传 |
 
-```markdown
-![Transformer 架构](https://github.com/user-attachments/assets/xxxxxxx)
-```
+#### :material-lightning-bolt: 日常操作（3 秒完成）
 
-!!! tip "Issue 不用提交"
-    只要把图片拖进编辑框获取链接即可，Issue 本身不需要发布，链接也永久有效。
+1. **截图**：微信/QQ ++ctrl+alt+a++ 或系统截图，图片进入剪贴板
+2. **定位光标**：在 Markdown 文件中将光标放在插入位置
+3. **一键上传**：
 
-#### 方式二：本地图片
+    === "Windows / Linux"
+        按下 ++ctrl+alt+u++
 
-适合小图标、必须版本控制的图片：
+    === "Mac"
+        按下 ++cmd+opt+u++
 
-```
-docs/AI/LLM/
-├── images/          ← 图片文件夹（就近存放）
-│   └── attention.png
-└── transformer.md
-```
+4. **完成**：等待 1~2 秒，自动生成 CDN 加速链接：
 
-```markdown
-![注意力机制](images/attention.png)
-```
+    ```markdown
+    ![image](https://cdn.jsdelivr.net/gh/alannian/blog_image@main/img/时间戳.png)
+    ```
 
-### 图片尺寸控制
+#### :material-image-size-select-large: 图片尺寸控制
 
 ```markdown
 <!-- 固定宽度 -->
-![图片](images/photo.png){ width="500" }
-
-<!-- 固定高度 -->
-![图片](images/photo.png){ height="300" }
+![图片](https://cdn.jsdelivr.net/.../img/xxx.png){ width="500" }
 
 <!-- 百分比宽度 -->
-![图片](images/photo.png){ width="80%" }
+![图片](https://cdn.jsdelivr.net/.../img/xxx.png){ width="80%" }
 ```
 
-### 图片居中 + 标题
+#### :material-image-frame: 图片居中 + 标题
 
 ```markdown
 <figure markdown>
-  ![Transformer 架构](images/transformer.png){ width="600" }
+  ![Transformer 架构](https://cdn.jsdelivr.net/.../img/xxx.png){ width="600" }
   <figcaption>图1：Transformer 整体架构</figcaption>
 </figure>
 ```
 
-### 图片并排
+#### :material-wrench-outline: 换电脑配置备份
 
-```markdown
-<div class="grid" markdown>
+??? note "PicGo 插件配置参数（点击展开）"
+    **前置准备**：在 GitHub 申请一个仅含 `repo` 权限的 Personal Access Token（永不过期）
 
-![图A](images/a.png){ width="300" }
+    **插件设置路径**：设置 → 扩展 → PicGo → 搜索 `Pic Bed: Github`
 
-![图B](images/b.png){ width="300" }
+    | 参数 | 值 |
+    | :--- | :--- |
+    | `Github: Repo` | `alannian/blog_image` |
+    | `Github: Branch` | `main` |
+    | `Github: Path` | `img/` |
+    | `Github: Custom Url` | `https://cdn.jsdelivr.net/gh/alannian/blog_image@main` |
+    | `Github: Token` | `ghp_xxxxxxxxxxxxxxxxxxx`（**妥善保管，切勿泄露**） |
 
-</div>
-```
+    全局设置：搜索 `Picgo: Default Pic Bed`，设置为 `github`。
 
 ---
 
