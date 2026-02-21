@@ -1,8 +1,5 @@
 - "2026":
   - "2026-02-12":
-    - "newpage":
-        text: "Robotics > 机械 > SolidWorks"
-        href: /Robotics/机械/SW/
     - "function": 集成 mkdocs-changelog-plugin，更新记录改为 YAML 驱动自动生成
     - "function": 添加页脚版权声明
     - "pageupdate": 首页布局优化，压缩垂直间距
