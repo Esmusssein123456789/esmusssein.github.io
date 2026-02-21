@@ -475,24 +475,106 @@ Transformer
 
 ## 14. 链接与图片
 
-### 内部链接
+### 内部链接（站内跳转）
 
 ```markdown
-[跳转到 Python 笔记](学习笔记/python.md)
-[跳转到某个标题](学习笔记/python.md#装饰器decorator)
+<!-- 跳转到同板块的另一篇笔记 -->
+[Python 学习笔记](../编程基础/python.md)
+
+<!-- 跳转到笔记中的某个标题 -->
+[Python 装饰器](../编程基础/python.md#装饰器)
+
+<!-- 跳转到其他板块的笔记（用相对路径） -->
+[ROS1 常用命令](../../Robotics/ROS/ROS1/index.md)
 ```
+
+!!! tip "路径怎么写？"
+    从当前文件出发：
+
+    - `./` 或直接写文件名 → 同目录
+    - `../` → 上一级目录
+    - `../../` → 上两级目录
+
+    例如从 `docs/AI/LLM/transformer.md` 跳转到 `docs/Robotics/ROS/index.md`，路径为：  
+    `../../Robotics/ROS/index.md`
 
 ### 外部链接
 
 ```markdown
+<!-- 基本链接 -->
 [Google](https://www.google.com)
+
+<!-- 新标签页打开（HTML 写法） -->
+<a href="https://arxiv.org" target="_blank">arXiv</a>
+
+<!-- 自动链接 -->
+<https://github.com/alannian>
 ```
 
-### 图片
+### 图片插入
+
+#### 方式一：GitHub Issues 图床（推荐）
+
+适合大图和截图，不占仓库空间：
+
+1. 打开你仓库的任意 Issue 编辑框
+2. 直接**拖拽 / 粘贴**图片
+3. GitHub 自动生成链接，复制到 Markdown 中
 
 ```markdown
-![图片描述](images/photo.png)
-![带尺寸控制](images/photo.png){ width="300" }
+![Transformer 架构](https://github.com/user-attachments/assets/xxxxxxx)
+```
+
+!!! tip "Issue 不用提交"
+    只要把图片拖进编辑框获取链接即可，Issue 本身不需要发布，链接也永久有效。
+
+#### 方式二：本地图片
+
+适合小图标、必须版本控制的图片：
+
+```
+docs/AI/LLM/
+├── images/          ← 图片文件夹（就近存放）
+│   └── attention.png
+└── transformer.md
+```
+
+```markdown
+![注意力机制](images/attention.png)
+```
+
+### 图片尺寸控制
+
+```markdown
+<!-- 固定宽度 -->
+![图片](images/photo.png){ width="500" }
+
+<!-- 固定高度 -->
+![图片](images/photo.png){ height="300" }
+
+<!-- 百分比宽度 -->
+![图片](images/photo.png){ width="80%" }
+```
+
+### 图片居中 + 标题
+
+```markdown
+<figure markdown>
+  ![Transformer 架构](images/transformer.png){ width="600" }
+  <figcaption>图1：Transformer 整体架构</figcaption>
+</figure>
+```
+
+### 图片并排
+
+```markdown
+<div class="grid" markdown>
+
+![图A](images/a.png){ width="300" }
+
+![图B](images/b.png){ width="300" }
+
+</div>
 ```
 
 ---
@@ -501,14 +583,201 @@ Transformer
 
 ```markdown
 按 ++ctrl+c++ 复制，++ctrl+v++ 粘贴。
+保存文件 ++ctrl+s++，撤销 ++ctrl+z++。
 ```
 
-!!! note "需要扩展"
-    键盘按键需要启用 `pymdownx.keys` 扩展。  
-    如需使用，在 `mkdocs.yml` 的 `markdown_extensions` 中添加：
-    ```yaml
-    - pymdownx.keys
+按 ++ctrl+c++ 复制，++ctrl+v++ 粘贴。
+保存文件 ++ctrl+s++，撤销 ++ctrl+z++。
+
+### 常用按键写法
+
+| 写法 | 效果 |
+| :--- | :--- |
+| `++ctrl+c++` | ++ctrl+c++ |
+| `++ctrl+shift+p++` | ++ctrl+shift+p++ |
+| `++alt+tab++` | ++alt+tab++ |
+| `++enter++` | ++enter++ |
+| `++backspace++` | ++backspace++ |
+| `++arrow-up++` | ++arrow-up++ |
+| `++f5++` | ++f5++ |
+
+---
+
+## 16. 代码注释气泡（Annotations）
+
+在代码块中添加交互式注释气泡，鼠标点击序号即可查看解释。
+
+````markdown
+```python
+def train(model, data):      # (1)!
+    optimizer = Adam(lr=3e-4)  # (2)!
+    for batch in data:
+        loss = model(batch)    # (3)!
+        loss.backward()
+        optimizer.step()
+```
+
+1. 传入模型和数据集
+2. 使用 Adam 优化器，学习率 0.0003
+3. 前向传播计算损失
+````
+
+```python
+def train(model, data):      # (1)!
+    optimizer = Adam(lr=3e-4)  # (2)!
+    for batch in data:
+        loss = model(batch)    # (3)!
+        loss.backward()
+        optimizer.step()
+```
+
+1. 传入模型和数据集
+2. 使用 Adam 优化器，学习率 0.0003
+3. 前向传播计算损失
+
+!!! info "语法要点"
+    - 在代码行末尾写 `# (1)!`（注意有 `!`）
+    - 在代码块**下方**用有序列表写注释内容
+    - 序号必须从 1 开始，依次递增
+
+---
+
+## 17. 引用块
+
+```markdown
+> 这是一段引用文字。
+> 
+> 可以包含多行，适合引用名言或他人观点。
+
+> **鲁迅说：**
+> 
+> 是真的，这话我确实是说过了
+```
+
+> 这是一段引用文字。
+> 
+> 可以包含多行，适合引用名言或他人观点。
+
+### 嵌套引用
+
+```markdown
+> 第一层引用
+> > 嵌套引用
+> > > 再嵌套一层
+```
+
+> 第一层引用
+> > 嵌套引用
+> > > 再嵌套一层
+
+---
+
+## 18. Emoji 表情
+
+直接在 Markdown 中使用 Emoji 简码：
+
+```markdown
+:smile: :rocket: :star: :fire: :bulb: :warning:
+:white_check_mark: :x: :question: :point_right:
+```
+
+:smile: :rocket: :star: :fire: :bulb: :warning:
+:white_check_mark: :x: :question: :point_right:
+
+### 常用 Emoji 速查
+
+| 写法 | 效果 | 用途 |
+| :--- | :---: | :--- |
+| `:smile:` | :smile: | 开心 |
+| `:rocket:` | :rocket: | 发布/上线 |
+| `:star:` | :star: | 重要/收藏 |
+| `:fire:` | :fire: | 热门/精华 |
+| `:bulb:` | :bulb: | 想法/灵感 |
+| `:warning:` | :warning: | 警告 |
+| `:white_check_mark:` | :white_check_mark: | 完成 |
+| `:x:` | :x: | 错误/禁止 |
+| `:construction:` | :construction: | 施工中 |
+| `:memo:` | :memo: | 笔记 |
+| `:books:` | :books: | 学习/阅读 |
+| `:wrench:` | :wrench: | 工具/修复 |
+
+!!! tip "与 Material 图标的区别"
+    - `:smile:` → Emoji 表情，彩色小图标
+    - `:material-robot:` → Material 图标，单色矢量图标，适合标题装饰
+
+---
+
+## 19. 组合技巧
+
+### 提示块内嵌代码
+
+````markdown
+!!! example "示例代码"
+    ```python
+    for i in range(10):
+        print(i)
     ```
+````
+
+!!! example "示例代码"
+    ```python
+    for i in range(10):
+        print(i)
+    ```
+
+### 提示块 + 选项卡
+
+````markdown
+!!! tip "多语言写法"
+    === "Python"
+        ```python
+        print("hello")
+        ```
+    === "C++"
+        ```cpp
+        std::cout << "hello" << std::endl;
+        ```
+````
+
+!!! tip "多语言写法"
+    === "Python"
+        ```python
+        print("hello")
+        ```
+    === "C++"
+        ```cpp
+        std::cout << "hello" << std::endl;
+        ```
+
+### 可折叠提示块 + 列表
+
+```markdown
+??? note "参考资料（点击展开）"
+    - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+    - [BERT 论文](https://arxiv.org/abs/1810.04805)
+    - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+```
+
+??? note "参考资料（点击展开）"
+    - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+    - [BERT 论文](https://arxiv.org/abs/1810.04805)
+    - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+
+### 表格内使用格式
+
+```markdown
+| 模型 | 参数量 | 说明 |
+| :--- | :---: | :--- |
+| GPT-2 | 1.5B | ~~已过时~~ |
+| GPT-3 | **175B** | ==里程碑== |
+| GPT-4 | 未公开 | 多模态 :rocket: |
+```
+
+| 模型 | 参数量 | 说明 |
+| :--- | :---: | :--- |
+| GPT-2 | 1.5B | ~~已过时~~ |
+| GPT-3 | **175B** | ==里程碑== |
+| GPT-4 | 未公开 | 多模态 :rocket: |
 
 ---
 
@@ -519,10 +788,17 @@ Transformer
 | 高亮一段重要提示 | `!!! tip "标题"` |
 | 展示多语言代码 | `=== "Python"` 选项卡 |
 | 带行号的代码 | ` ```python linenums="1" ` |
+| 代码注释气泡 | `# (1)!` + 下方有序列表 |
 | 一键复制代码 | 已全局开启，悬浮代码块右上角 |
 | 数学公式 | `$行内$` 或 `$$行间$$` |
 | 流程图 | ` ```mermaid ` |
 | 折叠长内容 | `??? note "标题"` |
 | 漂亮的信息卡片 | `<div class="grid cards">` |
 | 图标装饰标题 | `:material-robot:` |
+| Emoji 表情 | `:rocket:` `:star:` |
 | 待办事项 | `- [x] 已完成` |
+| 插入图片 | `![描述](url){ width="500" }` |
+| 图片居中+标题 | `<figure markdown>` |
+| 站内跳转 | `[文字](../路径/文件.md#标题)` |
+| 键盘按键 | `++ctrl+c++` |
+| 引用块 | `> 引用文字` |
