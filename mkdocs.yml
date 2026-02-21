@@ -160,6 +160,7 @@ nav:
           - FreeRTOS: Robotics/嵌入式/FreeRTOS/index.md
   - AI:
       - AI/index.md
+      - CV: AI/CV/index.md
       - LLM: AI/LLM/index.md
       - VLA: AI/VLA/index.md
       - 强化学习: AI/强化学习/index.md
