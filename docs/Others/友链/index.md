@@ -10,7 +10,13 @@
 <p class="friend-desc"></p>
 </div>
 </a>
-
+<a class="friend-card" href="https://zhihui.lingjun.life/archives" target="_blank">
+    <img class="friend-avatar" src="https://zhihui.lingjun.life/logo.jpg" alt="zhihuijun">
+    <div class="friend-info">
+    <p class="friend-name">稚晖的个人站</p>
+    <p class="friend-desc"></p>
+    </div>
+</a>
 </div>
 
 ??? tip "如何添加新友链？"
