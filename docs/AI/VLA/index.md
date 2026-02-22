@@ -26,7 +26,7 @@ VLA 模型的本质是将机器人的连续控制问题，转化为类似大语�
         - [ ] Action (动作): 了解 Imitation Learning (模仿学习) 和 Behavior Cloning (行为克隆) 的基本概念。
         - [ ] 精读 RT-1 (Robotics Transformer 1) 论文的核心章节，重点看它如何将机器人的连续动作（如 xyz 坐标、末端姿态）转换为离散的 Token。
         - [ ] 学习“动作分词”（Action Tokenization）中的 Binning 策略（例如将 -1.0 到 1.0 的连续控制区间均匀划分为 256 个独立的 Token）。
-        - [ ]学习扩散策略（Diffusion Policy）。
+        - [ ] 学习扩散策略（Diffusion Policy）。
     - [ ] 实践
         - [ ] 打开 OpenVLA 的 GitHub 源码，直接搜索并阅读 action_tokenizer.py 或类似的数据处理脚本，看它怎么把浮点数映射成 256 个特殊 Token（Binning 策略）。
         - [ ] 对比阅读 Octo 的架构，看看扩散模型是怎么处理连续动作流的。
