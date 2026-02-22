@@ -22,7 +22,7 @@ changelog: True
 
 ---
 
-!!! tip "如何维护更新记录"
+??? tip "如何维护更新记录"
     本页由 [mkdocs-changelog-plugin](https://github.com/TonyCrane/mkdocs-changelog-plugin) 自动渲染，**但数据需要手动维护**。
     
     每次发布新笔记后，编辑项目根目录的 `changelog.yml`，在对应年份下添加条目即可。  

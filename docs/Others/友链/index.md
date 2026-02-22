@@ -3,7 +3,7 @@
 !!! abstract "见贤思齐焉。"
     
 <div class="friend-links">
-<a class="friend-card" href="https://smilingwayne.github.io/me/" target="_blank">
+<a class="friend-card" href="https://smilingwayne.github.io/me/index_CN/" target="_blank">
 <img class="friend-avatar" src="https://avatars.githubusercontent.com/u/69518108?v=4" alt="笑笑" loading="lazy">
 <div class="friend-info">
 <p class="friend-name">笑笑的站</p>
