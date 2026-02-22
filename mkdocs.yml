@@ -59,6 +59,7 @@ theme:
 # ──────────────────────────────────────────────
 extra_css:
   - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
 
 extra_javascript:
   - javascripts/extra.js
