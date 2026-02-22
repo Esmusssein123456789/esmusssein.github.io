@@ -178,3 +178,62 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(function () { /* keep current text */ });
   }
 });
+
+/**
+ * 页面统计栏 — 自动注入到每页 h1 标题下方
+ * 统计：字数、代码块、图片、预计阅读时间、阅读量（不蒜子）
+ */
+document.addEventListener("DOMContentLoaded", function () {
+  // 跳过首页（有 hero 打字机的页面）
+  if (document.getElementById("typewriter-lines")) return;
+
+  var article = document.querySelector(".md-content__inner");
+  if (!article) return;
+
+  var h1 = article.querySelector("h1");
+  if (!h1) return;
+
+  // 统计字数（中文字符 + 英文单词）
+  // 克隆内容，移除代码块后统计纯正文
+  var clone = article.cloneNode(true);
+  var codeTags = clone.querySelectorAll("pre, code, .highlight");
+  codeTags.forEach(function (el) { el.remove(); });
+  var text = clone.textContent || "";
+  var cnCount = (text.match(/[\u4e00-\u9fff]/g) || []).length;
+  var enCount = (text.match(/[a-zA-Z]+/g) || []).length;
+  var wordCount = cnCount + enCount;
+
+  // 图片数量
+  var imgCount = article.querySelectorAll("img").length;
+
+  // 代码块数量
+  var codeCount = article.querySelectorAll("pre > code").length;
+
+  // 阅读时间（中文 300 字/分钟 + 英文 200 词/分钟）
+  var readMinutes = Math.ceil(cnCount / 300 + enCount / 200);
+  if (readMinutes < 1) readMinutes = 1;
+
+  // 构建统计栏
+  var bar = document.createElement("div");
+  bar.className = "page-stats-bar";
+
+  var items = [];
+  items.push('<span class="ps-item"><i class="ps-icon">✏</i> 约 ' + wordCount + ' 个字</span>');
+
+  if (codeCount > 0) {
+    items.push('<span class="ps-item"><i class="ps-icon">💻</i> ' + codeCount + ' 个代码块</span>');
+  }
+  if (imgCount > 0) {
+    items.push('<span class="ps-item"><i class="ps-icon">🖼</i> ' + imgCount + ' 张图片</span>');
+  }
+
+  items.push('<span class="ps-item"><i class="ps-icon">⏱</i> 预计阅读时间 ' + readMinutes + ' 分钟</span>');
+
+  // 不蒜子阅读量占位
+  items.push('<span class="ps-item"><i class="ps-icon">👁</i> 总阅读量 <span id="busuanzi_value_page_pv">-</span> 次</span>');
+
+  bar.innerHTML = items.join("");
+
+  // 插入到 h1 之后
+  h1.parentNode.insertBefore(bar, h1.nextSibling);
+});

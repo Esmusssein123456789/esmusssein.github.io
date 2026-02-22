@@ -65,6 +65,7 @@ extra_javascript:
   - javascripts/extra.js
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 
 # ──────────────────────────────────────────────
 # Markdown 扩展（核心能力）
@@ -141,7 +142,7 @@ extra:
       link: https://github.com/alannian
       name: GitHub
 
-copyright: Copyright &copy; 2026 nian · Powered by <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+copyright: Copyright &copy; 2026 nian 
 
 # ──────────────────────────────────────────────
 # 导航结构

@@ -444,11 +444,46 @@
 }
 
 /* ============================================================
-   Admonition 圆角
+   Admonition 圆角 & 字号
    ============================================================ */
 .md-typeset .admonition,
 .md-typeset details {
   border-radius: 8px;
+  font-size: 0.82rem;
+}
+.md-typeset .admonition > p,
+.md-typeset details > p,
+.md-typeset .admonition > .admonition-title ~ p,
+.md-typeset details > .admonition-title ~ p,
+.md-typeset details > summary ~ p {
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
+/* ============================================================
+   页面统计栏（标题下方自动注入）
+   ============================================================ */
+.page-stats-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin: -0.3rem 0 1.2rem;
+  padding: 0;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+  opacity: 0.7;
+  font-family: "JetBrains Mono", "Noto Sans SC", monospace;
+  letter-spacing: 0.01em;
+}
+.page-stats-bar .ps-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.page-stats-bar .ps-icon {
+  font-style: normal;
 }
 
 /* ============================================================
